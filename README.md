@@ -20,7 +20,9 @@
 1. Open the root folder using [VS Code](https://code.visualstudio.com/)
    * If you use [GitHub Desktop](https://desktop.github.com/), select the "Open in Visual Studio" button
 1. Select "Terminal" > "New Terminal"
-1. Run `python3 -m pip install -r requirements.txt` to install dependencies noted in [requirements.txt](/requirements.txt)
+1.  Install dependencies noted in [requirements.txt](/requirements.txt)
+   * [mac] Run `python3 -m pip install -r requirements.txt`
+   * [win] Run `py -3 -m pip install -r requirements.txt`
 1. In the root folder create a new file called `.env`
 1. Copy+Paste the following
    ```
@@ -29,4 +31,5 @@
    TEST_PASS="SuperSecretPassword!"
    ```
 1. Save
-1. In terminal run `behave`
+1. [mac] In terminal run `behave`
+1. [win] In terminal run `py -3 -m behave`

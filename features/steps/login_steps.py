@@ -1,12 +1,14 @@
 from behave import *
+import features.pages.login_page as login_page
+
 
 # Given I am on the login page
 @given('I am on the login page')
 def step_impl(context):
-    # LoginPage.open()
-    pass
+    login_page.open()
+
 
 # When I login with <username> and <password>
-@given('I enter {message}')
-def step_impl(context, message):
-    print()
+@when('I login with {username} and {password}')
+def step_impl(context, username, password):
+    login_page.login(username, password)

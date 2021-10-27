@@ -1,2 +1,5 @@
+chromedriver-binary
+chromedriver-binary-auto
 behave
 python-dotenv
+selenium
