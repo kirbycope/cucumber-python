@@ -1,7 +1,7 @@
 # cucumber-python
 [Cucumber](https://cucumber.io/) is a software tool that supports behavior-driven development (BDD). </br>
 [Python](https://www.python.org/) is an interpreted high-level general-purpose programming language. </br>
-[Appium](https://appium.io/) is an open source automation tool for running scripts and testing native applications, mobile-web applications and hybrid applications on Android or iOS using a webdriver.
+[Selenium](https://selenium.dev) is an open-source automated testing framework for web applications.
 
 ## Core Concepts
 * [Behaviour Driven Development](https://en.wikipedia.org/wiki/Behavior-driven_development) is an agile software development process that encourages collaboration among developers, quality assurance testers, and customer representatives in a software project.
@@ -31,5 +31,6 @@
    TEST_PASS="SuperSecretPassword!"
    ```
 1. Save
-1. [mac] In terminal run `behave`
-1. [win] In terminal run `py -3 -m behave`
+1. Run tests
+   * [mac] In terminal run `behave`
+   * [win] In terminal run `py -3 -m behave`
