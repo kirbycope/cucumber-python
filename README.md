@@ -12,7 +12,7 @@
   * PageObect.someFunction()
   * PageOject.someElement().click()
 * [Page Object Model](https://www.selenium.dev/documentation/en/guidelines_and_recommendations/page_object_models/) is a Design Pattern which has become popular in test automation for enhancing test maintenance and reducing code duplication. </br>
-  * "/login" will have a "Login page object" that contains the selectors for elements on that page and functions that can be performed on that page.
+  * The "login" screen will have a "Login page object" that contains the selectors for elements on the page and functions that can be performed on that page.
 
 # Getting Started
 1. Install [Python3](https://www.python.org/downloads/)
