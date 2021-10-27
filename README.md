@@ -16,6 +16,7 @@
 
 # Getting Started
 1. Install [Python3](https://www.python.org/downloads/)
+1. Clone this repo
 1. Open the root folder using [VS Code](https://code.visualstudio.com/)
    * If you use [GitHub Desktop](https://desktop.github.com/), select the "Open in Visual Studio" button
 1. Select "Terminal" > "New Terminal"
