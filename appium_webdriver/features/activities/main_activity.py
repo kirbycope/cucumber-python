@@ -1,3 +1,4 @@
+from time import sleep
 import test_data
 
 
@@ -23,3 +24,4 @@ def send_message(message):
     """ Enters the given message and then clicks the 'SEND' button. """
     editTextEnterAMessage().send_keys(message)
     buttonSend().click()
+    sleep(.250)
