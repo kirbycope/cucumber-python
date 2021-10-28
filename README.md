@@ -16,14 +16,15 @@
 ## Getting Started
 1. Install [Python3](https://www.python.org/downloads/)
 1. [Mobile] Install [Appium Server](https://github.com/appium/appium-desktop/releases/latest)
+   * [Optional] Install [Appium Inspector](https://github.com/appium/appium-inspector/releases/latest)
 1. [Android] Install [Android Studio](https://developer.android.com/studio) and [create an AVD](https://developer.android.com/studio/run/managing-avds)
 1. Clone this repo
 1. Open the root folder using [VS Code](https://code.visualstudio.com/)
    * If you use [GitHub Desktop](https://desktop.github.com/), select the "Open in Visual Studio" button
 1. Open the [integrated terminal](https://code.visualstudio.com/docs/editor/integrated-terminal)
 1. Install dependencies noted in [requirements.txt](/requirements.txt)
-   * [mac] Run `python3 -m pip install -r requirements.txt`
-   * [win] Run `py -3 -m pip install -r requirements.txt`
+   * [mac] In the integrated terminal run `python3 -m pip install -r requirements.txt`
+   * [win] In the integrated terminal run `py -3 -m pip install -r requirements.txt`
 1. In the root folder create a new file called `.env`
 1. Copy+Paste the following
    ```
@@ -38,22 +39,23 @@
 ### Appium (Mobile Apps)
 [Appium](https://appium.io) is an open source automation tool for running scripts and testing native applications, mobile-web applications and hybrid applications on Android or iOS using a webdriver. </br>
 Example tests use https://developer.android.com/training/basics/firstapp </br>
-The apk is included as part of this sample repo.
-1. With the Android emulator running and Appium server running
-   * [mac] In terminal run `behave appium_webdriver/features`
-   * [win] In terminal run `py -3 -m behave appium_webdriver/features`
+The [apk](/app-debug.apk) is included as part of _this_ sample repo.
+
+With the Android emulator running and Appium server running:
+   * [mac] In the integrated terminal run `behave appium_webdriver/features`
+   * [win] In the integrated terminal run `py -3 -m behave appium_webdriver/features`
 
 ### Selenium (Web Apps)
 [Selenium](https://selenium.dev) is an open-source automated testing framework for web applications. </br>
 Example tests use https://the-internet.herokuapp.com/login
-   * [mac] In terminal run `behave selenium_webdriver/features`
-   * [win] In terminal run `py -3 -m behave selenium_webdriver/features`
+
+   * [mac] In the integrated terminal run `behave selenium_webdriver/features`
+   * [win] In the integrated terminal run `py -3 -m behave selenium_webdriver/features`
 
 ## Python Tips and Tricks
 
-## Clear Dependencies
-1. Open the [integrated terminal](https://code.visualstudio.com/docs/editor/integrated-terminal)
-1. Run `pip3 freeze | xargs pip uninstall -y`
+### Clear Dependencies
+In the integrated terminal run `pip3 freeze | xargs pip uninstall -y`
 
 ### Hide pycache from VS Code's Explorer
 1. Open the [Command Pallete](https://code.visualstudio.com/docs/getstarted/userinterface#_command-palette)
