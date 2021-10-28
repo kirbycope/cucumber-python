@@ -8,6 +8,7 @@ import test_data
 def before_scenario(context, scenario):
     test_data.init()
     test_data.time_start = time.time()
+    start_session()
 
 
 def after_scenario(context, scenario):
