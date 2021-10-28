@@ -16,7 +16,7 @@ def buttonSend():
 
 def open():
     """ Opens _this_ activity """
-    print() # being the default activity there is nothing to do here 
+    print() # being the default activity there is nothing to do here
 
 
 def send_message(message):
