@@ -1,7 +1,6 @@
 # cucumber-python
 [Cucumber](https://cucumber.io/) is a software tool that supports behavior-driven development (BDD). </br>
-[Python](https://www.python.org/) is an interpreted high-level general-purpose programming language. </br>
-[Selenium](https://selenium.dev) is an open-source automated testing framework for web applications.
+[Python](https://www.python.org/) is an interpreted high-level general-purpose programming language.
 
 ## Core Concepts
 * [Behaviour Driven Development](https://en.wikipedia.org/wiki/Behavior-driven_development) is an agile software development process that encourages collaboration among developers, quality assurance testers, and customer representatives in a software project.
@@ -14,13 +13,15 @@
 * [Page Object Model](https://www.selenium.dev/documentation/en/guidelines_and_recommendations/page_object_models/) is a Design Pattern which has become popular in test automation for enhancing test maintenance and reducing code duplication. </br>
   * The "login" screen will have a "Login page object" that contains the selectors for elements on the page and functions that can be performed on that page.
 
-# Getting Started
+## Getting Started
 1. Install [Python3](https://www.python.org/downloads/)
+1. [Mobile] Install [Appium Server](https://github.com/appium/appium-desktop/releases/latest)
+1. [Android] Install [Android Studio](https://developer.android.com/studio) and [create an AVD](https://developer.android.com/studio/run/managing-avds)
 1. Clone this repo
 1. Open the root folder using [VS Code](https://code.visualstudio.com/)
    * If you use [GitHub Desktop](https://desktop.github.com/), select the "Open in Visual Studio" button
-1. Select "Terminal" > "New Terminal"
-1.  Install dependencies noted in [requirements.txt](/requirements.txt)
+1. Open the [integrated terminal](https://code.visualstudio.com/docs/editor/integrated-terminal)
+1. Install dependencies noted in [requirements.txt](/requirements.txt)
    * [mac] Run `python3 -m pip install -r requirements.txt`
    * [win] Run `py -3 -m pip install -r requirements.txt`
 1. In the root folder create a new file called `.env`
@@ -31,6 +32,32 @@
    TEST_PASS="SuperSecretPassword!"
    ```
 1. Save
-1. Run tests
-   * [mac] In terminal run `behave`
-   * [win] In terminal run `py -3 -m behave`
+
+## Run tests
+
+### Appium (Mobile Apps)
+[Appium](https://appium.io) is an open source automation tool for running scripts and testing native applications, mobile-web applications and hybrid applications on Android or iOS using a webdriver. </br>
+Example tests use https://developer.android.com/training/basics/firstapp </br>
+The apk is included as part of this sample repo.
+1. With the Android emulator running and Appium server running
+   * [mac] In terminal run `behave appium_webdriver/features`
+   * [win] In terminal run `py -3 -m behave appium_webdriver/features`
+
+### Selenium (Web Apps)
+[Selenium](https://selenium.dev) is an open-source automated testing framework for web applications. </br>
+Example tests use https://the-internet.herokuapp.com/login
+   * [mac] In terminal run `behave selenium_webdriver/features`
+   * [win] In terminal run `py -3 -m behave selenium_webdriver/features`
+
+## Python Tips and Tricks
+
+## Clear Dependencies
+1. Open the [integrated terminal](https://code.visualstudio.com/docs/editor/integrated-terminal)
+1. Run `pip3 freeze | xargs pip uninstall -y`
+
+### Hide pycache from VS Code's Explorer
+1. Open the [Command Pallete](https://code.visualstudio.com/docs/getstarted/userinterface#_command-palette)
+1. Search for and then select "Preferences: Open User Settings"
+1. Seach for `files.exclude`
+1. Select the "Add Pattern" button
+1. Enter `**/__pycache__`

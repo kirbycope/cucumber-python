@@ -1,3 +1,4 @@
+Appium-Python-Client
 chromedriver-binary
 chromedriver-binary-auto
 behave

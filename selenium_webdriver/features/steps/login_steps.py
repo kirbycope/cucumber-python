@@ -1,5 +1,5 @@
 from behave import *
-import features.pages.login_page as login_page
+import selenium_webdriver.features.pages.login_page as login_page
 
 
 # Given I am on the login page
