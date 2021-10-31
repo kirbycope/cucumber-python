@@ -34,7 +34,7 @@
    ```
 1. Save
 
-## Run tests
+## Run Tests
 
 ### Appium (Mobile Apps)
 [Appium](https://appium.io) is an open source automation tool for running scripts and testing native applications, mobile-web applications and hybrid applications on Android or iOS using a webdriver. </br>
