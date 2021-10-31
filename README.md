@@ -14,14 +14,14 @@
   * The "login" screen will have a "Login page object" that contains the selectors for elements on the page and functions that can be performed on that page.
 
 ## Getting Started
+1. Install [NodeJS](https://nodejs.org/en/) LTS
 1. Install [Python3](https://www.python.org/downloads/)
-1. [Mobile] Install [Appium Server](https://github.com/appium/appium-desktop/releases/latest)
-   * [Optional] Install [Appium Inspector](https://github.com/appium/appium-inspector/releases/latest)
 1. [Android] Install [Android Studio](https://developer.android.com/studio) and [create an AVD](https://developer.android.com/studio/run/managing-avds)
 1. Clone this repo
 1. Open the root folder using [VS Code](https://code.visualstudio.com/)
    * If you use [GitHub Desktop](https://desktop.github.com/), select the "Open in Visual Studio" button
 1. Open the [integrated terminal](https://code.visualstudio.com/docs/editor/integrated-terminal)
+1. Install Appium by running `npm i appium`
 1. Install dependencies noted in [requirements.txt](/requirements.txt)
    * [mac] In the integrated terminal run `python3 -m pip install -r requirements.txt`
    * [win] In the integrated terminal run `py -3 -m pip install -r requirements.txt`
@@ -41,7 +41,7 @@
 Example tests use https://developer.android.com/training/basics/firstapp </br>
 The [apk](/app-debug.apk) is included as part of _this_ sample repo.
 
-With the Android emulator running and Appium server running:
+With the [AVD](https://developer.android.com/studio/run/emulator-commandline) running:
    * [mac] In the integrated terminal run `behave appium_webdriver/features`
    * [win] In the integrated terminal run `py -3 -m behave appium_webdriver/features`
 
