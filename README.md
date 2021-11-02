@@ -63,3 +63,4 @@ In the integrated terminal run `pip3 freeze | xargs pip uninstall -y`
 1. Seach for `files.exclude`
 1. Select the "Add Pattern" button
 1. Enter `**/__pycache__`
+   - Repeat `**/node_modules`
