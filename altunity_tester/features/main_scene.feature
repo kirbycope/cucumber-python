@@ -1,10 +1,10 @@
-Feature: Start Game
+Feature: Main scene
 
-    Scenario Outline: Test Start Game
-        Given I open the scene <name>
-        When I foo
-        Then I bar
-        
+    Scenario Outline: Pause a run
+        Given I open the <name> scene
+        When I start running and pause
+        Then I should see the Pause Menu
+
         Examples:
-            | name                    |
-            | Scene 2 Draggable Panel |
+            | name |
+            | Main |

@@ -1,24 +1,27 @@
 import test_data
 from altunityrunner import *
 
-# Main scene
+# "Main" scene
 
 
-def btnClose():
-    """ The "close" `button`. """
-    return test_data.altUnityDriver.find_object(By.NAME, "Close Button")
+def btnRun():
+    """ The "Run!" `button`. """
+    return test_data.altUnityDriver.find_object(By.NAME, "StartButton")
 
 
-def btnFoo():
-    """ Some `button`. """
-    return test_data.altUnityDriver.find_object(By.NAME, "Button")
+def btnPause():
+    """ The "||" (Pause) `button`. """
+    return test_data.altUnityDriver.find_object(By.NAME, "pauseButton")
 
 
 def open():
     """ Opens _this_ scene. """
-    print() # being the default scene there is nothing to do here
+    test_data.altUnityDriver.load_scene("Main")
 
 
-def open_close_panel():
-    btnClose().tap()
-    btnFoo.tap()
+def start_run_then_pause():
+    """ Starts a run and then pauses after 10 seconds. """
+    time.sleep(2)
+    btnRun().tap()
+    time.sleep(10)
+    btnPause().tap()
