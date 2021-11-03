@@ -23,8 +23,7 @@
 1. Open the [integrated terminal](https://code.visualstudio.com/docs/editor/integrated-terminal)
 1. Install Appium by running `npm i appium`
 1. Install dependencies noted in [requirements.txt](/requirements.txt)
-   * [mac] In the integrated terminal run `python3 -m pip install -r requirements.txt`
-   * [win] In the integrated terminal run `py -3 -m pip install -r requirements.txt`
+   * In the integrated terminal run `python3 -m pip install -r requirements.txt`
 1. In the root folder create a new file called `.env`
 1. Copy+Paste the following
    ```
@@ -36,6 +35,14 @@
 
 ## Run Tests
 
+### AltUnity (Unity Mobile Apps)
+[AltUnity](https://altom.gitlab.io/altunity/altunitytester) is a free, open source asset. Its main goal is to enable UI test automation, by instrumenting games to get access and programmatically control the Unity objects.</br>
+The [apk](/trashcat.apk) is included as part of _this_ sample repo.
+
+With the [AVD](https://developer.android.com/studio/run/emulator-commandline) running:
+   * [mac] In the integrated terminal run `behave altunity_tester/features`
+   * [win] In the integrated terminal run `python3 -m behave altunity_tester/features`
+
 ### Appium (Mobile Apps)
 [Appium](https://appium.io) is an open source automation tool for running scripts and testing native applications, mobile-web applications and hybrid applications on Android or iOS using a webdriver. </br>
 Example tests use https://developer.android.com/training/basics/firstapp </br>
@@ -43,19 +50,21 @@ The [apk](/app-debug.apk) is included as part of _this_ sample repo.
 
 With the [AVD](https://developer.android.com/studio/run/emulator-commandline) running:
    * [mac] In the integrated terminal run `behave appium_webdriver/features`
-   * [win] In the integrated terminal run `py -3 -m behave appium_webdriver/features`
+   * [win] In the integrated terminal run `python3 -m behave appium_webdriver/features`
 
 ### Selenium (Web Apps)
 [Selenium](https://selenium.dev) is an open-source automated testing framework for web applications. </br>
 Example tests use https://the-internet.herokuapp.com/login
 
    * [mac] In the integrated terminal run `behave selenium_webdriver/features`
-   * [win] In the integrated terminal run `py -3 -m behave selenium_webdriver/features`
+   * [win] In the integrated terminal run `python3 -m behave selenium_webdriver/features`
 
 ## Python Tips and Tricks
 
 ### Clear Dependencies
-In the integrated terminal run `pip3 freeze | xargs pip uninstall -y`
+
+   * [mac] In the integrated terminal run `pip3 freeze | xargs pip uninstall -y`
+   * [win] In the integrated terminal run `pip3 uninstall -y -r <(pip freeze)`
 
 ### Hide pycache from VS Code's Explorer
 1. Open the [Command Pallete](https://code.visualstudio.com/docs/getstarted/userinterface#_command-palette)
