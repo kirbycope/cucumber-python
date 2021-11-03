@@ -1,4 +1,10 @@
-Feature: Main scene
+Feature: Start Game
 
-    Scenario: Open Close panel
-        Given I am on the main scene
+    Scenario Outline: Test Start Game
+        Given I open the scene <name>
+        When I foo
+        Then I bar
+        
+        Examples:
+            | name                    |
+            | Scene 2 Draggable Panel |
