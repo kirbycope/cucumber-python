@@ -24,6 +24,7 @@
 1. Install Appium by running `npm i appium`
 1. Install dependencies noted in [requirements.txt](/requirements.txt)
    * In the integrated terminal run `pip3 install -r requirements.txt`
+   * Run `pip install --upgrade --force-reinstall chromedriver-binary-auto` to automatically set chromedriver to your Chrome version
 1. In the root folder create a new file called `.env`
 1. Copy+Paste the following
    ```
