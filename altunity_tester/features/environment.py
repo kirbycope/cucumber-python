@@ -15,7 +15,9 @@ def before_all(context):
     test_data.time_start = time.time()
     test_data.hub_uri = read_from_config("HUBURI")
     if "local" in test_data.hub_uri:
+        print("Starting Appium Server...")
         start_server()
+        print("Started.")
 
 
 def after_all(context):
@@ -28,6 +30,7 @@ def after_all(context):
 def before_scenario(context, scenario):
     """ This runs before each scenario. """
     start_session()
+    print("Forwaring port for AltUnity...")
     if "headspin" in test_data.hub_uri:
         devices = headspin.devices()
         udid = read_from_config("UDID")
@@ -35,6 +38,7 @@ def before_scenario(context, scenario):
         os.system("hs connect -t {} {}@{}".format(test_data.headspin_token, udid, host_name))
     AltUnityPortForwarding.forward_android()
     test_data.altUnityDriver = AltUnityDriver()
+    print("Forwarded.")
 
 
 def after_scenario(context, scenario):
@@ -77,8 +81,10 @@ def start_session():
         hub_uri = hub_uri + "/" + test_data.headspin_token + "/wd/hub"
     else:
         caps["appium:app"] = read_from_config("APP")
+    print("Starting Appium WebDriver...")
     test_data.driver = webdriver.Remote(command_executor=hub_uri, desired_capabilities=caps)
     test_data.driver.implicitly_wait(5)
+    print("Session ID: " + test_data.driver.session_id)
 
 
 def stop_debug_timer():
