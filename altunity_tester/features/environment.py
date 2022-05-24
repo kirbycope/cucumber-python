@@ -14,7 +14,6 @@ def before_all(context):
     test_data.init()
     test_data.time_start = time.time()
     test_data.hub_uri = read_from_config("HUBURI")
-    print(test_data.hub_uri)
     if "local" in test_data.hub_uri:
         start_server()
 
@@ -72,7 +71,7 @@ def start_session():
         desired_capabilities["headspin:controlLock"] = True
         desired_capabilities["headspin:newcommandtimeout"] = 120
         desired_capabilities["headspin:waitForDeviceOnlineTimeout"] = 120
-        command_executor = test_data.hub_uri + "/" + test_data.token + "/wd/hub"
+        command_executor = "{}/{}/wb/hub".format(test_data.hub_uri, test_data.token)
     else:
         desired_capabilities["appium:app": read_from_config("APP")]
         command_executor = test_data.hub_uri
