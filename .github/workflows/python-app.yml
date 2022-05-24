@@ -9,8 +9,8 @@ on:
   pull_request:
     branches: [ headspin ]
 
-permissions:
-  contents: read
+env:
+  HEADSPIN_API_TOKEN: ${{ secrets.HEADSPIN_API_TOKEN }}
 
 jobs:
   test:
