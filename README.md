@@ -55,7 +55,7 @@ The [apk](/trashcat.apk) is included as part of _this_ sample repo.
 1. Set `HEADSPIN_TOKEN` in .env to your [Heapspin API Token](https://ui.headspin.io/docs/api-tokens)
 1. Set the `APPID` in  [altunity.ini](/altunity.ini) to the ID of the [app you uploaded to Headspin](https://ui.headspin.io/docs/app-api)
 1. Set the `HUBURI` in [altunity.ini](/altunity.ini) to `https://appium-dev.headspin.io:443/v0`
-1. Set the `UDID` in [altunity.ini](/altunity.ini) to the "serial" of an Android [Headspin device](https://ui.headspin.io/docs/devices-api)
+1. Set the `UDID` in [altunity.ini](/altunity.ini) to the "serial" of your Android [Headspin device](https://ui.headspin.io/docs/devices-api)
 1. In the integrated terminal run `behave altunity_tester/features`
 
 ### Appium (Mobile Apps)
