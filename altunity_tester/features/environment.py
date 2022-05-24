@@ -71,8 +71,6 @@ def start_session():
         desired_capabilities["headspin:controlLock"] = True
         desired_capabilities["headspin:newcommandtimeout"] = 120
         desired_capabilities["headspin:waitForDeviceOnlineTimeout"] = 120
-        print(test_data.hub_uri)
-        print(test_data.token)
         command_executor = "{}/{}/wb/hub".format(test_data.hub_uri, test_data.token)
     else:
         desired_capabilities["appium:app": read_from_config("APP")]
