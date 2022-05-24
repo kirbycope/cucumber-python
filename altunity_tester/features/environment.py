@@ -4,9 +4,10 @@ from altunityrunner import *
 from datetime import timedelta
 import time
 import configparser
+import os
 import test_data
 import sys
-
+import headspin
 
 def before_all(context):
     """ This runs before after the whole shooting match. """
@@ -24,6 +25,11 @@ def after_all(context):
 def before_scenario(context, scenario):
     """ This runs before each scenario. """
     start_session()
+    token = os.environ.get("TOKEN")
+    udid = read_from_config("UDID")
+    devices = headspin.devices()
+    host_name = headspin.device_hostname(devices, udid)
+    os.system("hs connect -t {} {}@{}".format(token, udid, host_name))
     AltUnityPortForwarding.forward_android()
     test_data.altUnityDriver = AltUnityDriver()
 
@@ -52,11 +58,18 @@ def start_server():
 def start_session():
     """ Starts a session with the global webdriver. """
     desired_capabilities = {
-        "appium:app": read_from_config("APP"),
+        #"appium:app": read_from_config("APP"),
         "appium:udid": read_from_config("UDID"),
-        "platformName": read_from_config("PLATFORMNAME")
+        "platformName": read_from_config("PLATFORMNAME"),
+        "autoGrantPermissions": True,
+        "headspin:appId": read_from_config("APPID"),
+        "headspin:capture": True,
+        "headspin:controlLock": True,
+        "headspin:newcommandtimeout": 120,
+        "headspin:waitForDeviceOnlineTimeout": 120
     }
-    command_executor = read_from_config("HUBURI")
+    token = os.environ.get("TOKEN")
+    command_executor = read_from_config("HUBURI") + "/" + token + "/wd/hub"
     test_data.driver = webdriver.Remote(command_executor, desired_capabilities)
     test_data.driver.implicitly_wait(5)
 
