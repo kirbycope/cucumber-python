@@ -17,14 +17,16 @@
 1. Install [NodeJS](https://nodejs.org/en/) LTS
 1. Install [Python3](https://www.python.org/downloads/)
 1. [Android] Install [Android Studio](https://developer.android.com/studio) and [create an AVD](https://developer.android.com/studio/run/managing-avds)
+   * The AVD needs to be "x86" not "x86_64" to work with the [provided] example apk(s)
 1. Clone this repo
 1. Open the root folder using [VS Code](https://code.visualstudio.com/)
    * If you use [GitHub Desktop](https://desktop.github.com/), select the "Open in Visual Studio" button
 1. Open the [integrated terminal](https://code.visualstudio.com/docs/editor/integrated-terminal)
-1. Install Appium by running `npm i appium`
-1. Install dependencies noted in [requirements.txt](/requirements.txt)
+1. Install Appium  by running `npm i appium`
+1. Install Python dependencies noted in [requirements.txt](/requirements.txt)
    * In the integrated terminal run `pip3 install -r requirements.txt`
-   * Run `pip install --upgrade --force-reinstall chromedriver-binary-auto` to automatically set chromedriver to your Chrome version
+   * Run `pip3 install wheel` to install the installer package
+   * Run `pip3 install --upgrade --force-reinstall chromedriver-binary-auto` to automatically set chromedriver to your Chrome version
 1. In the root folder create a new file called `.env`
 1. Copy+Paste the following
    ```
