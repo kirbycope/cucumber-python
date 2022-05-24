@@ -10,16 +10,17 @@ import sys
 import headspin
 
 def before_all(context):
-    """ This runs before after the whole shooting match. """
+    """ This runs before the whole shooting match. """
     test_data.init()
     test_data.time_start = time.time()
     test_data.hub_uri = read_from_config("HUBURI")
+    print(test_data.hub_uri)
     if "local" in test_data.hub_uri:
         start_server()
 
 
 def after_all(context):
-    """ This runs before after the whole shooting match. """
+    """ This runs after the whole shooting match. """
     test_data.server.stop()
     stop_debug_timer()
 
