@@ -13,7 +13,9 @@ def before_all(context):
     """ This runs before after the whole shooting match. """
     test_data.init()
     test_data.time_start = time.time()
-    start_server()
+    test_data.hub_uri = read_from_config("HUBURI")
+    if "local" in test_data.hub_uri:
+        start_server()
 
 
 def after_all(context):
@@ -25,8 +27,7 @@ def after_all(context):
 def before_scenario(context, scenario):
     """ This runs before each scenario. """
     start_session()
-    hub_uri = read_from_config("HUBURI")
-    if "headspin" in hub_uri:
+    if "headspin" in test_data.hub_uri:
         devices = headspin.devices()
         udid = read_from_config("UDID")
         host_name = headspin.device_hostname(devices, udid)
@@ -39,8 +40,7 @@ def after_scenario(context, scenario):
     """ This runs after each scenario. """
     test_data.driver.quit()
     test_data.altUnityDriver.stop()
-    hub_uri = read_from_config("HUBURI")
-    if "local" in hub_uri:
+    if "local" in test_data.hub_uri:
         AltUnityPortForwarding.remove_forward_android()
 
 
@@ -64,18 +64,17 @@ def start_session():
         "appium:udid": read_from_config("UDID"),
         "platformName": read_from_config("PLATFORMNAME")
     }
-    hub_uri = read_from_config("HUBURI")
-    if "headspin" in hub_uri:
+    if "headspin" in test_data.hub_uri:
         desired_capabilities["autoGrantPermissions"] = True
         desired_capabilities["headspin:appId"] = read_from_config("APPID")
         desired_capabilities["headspin:capture"] = True
         desired_capabilities["headspin:controlLock"] = True
         desired_capabilities["headspin:newcommandtimeout"] = 120
         desired_capabilities["headspin:waitForDeviceOnlineTimeout"] = 120
-        command_executor = hub_uri + "/" + test_data.token + "/wd/hub"
+        command_executor = test_data.hub_uri + "/" + test_data.token + "/wd/hub"
     else:
         desired_capabilities["appium:app": read_from_config("APP")]
-        command_executor = hub_uri
+        command_executor = test_data.hub_uri
     test_data.driver = webdriver.Remote(command_executor, desired_capabilities)
     test_data.driver.implicitly_wait(5)
 

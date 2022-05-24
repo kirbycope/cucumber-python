@@ -3,6 +3,7 @@ from dotenv import load_dotenv, find_dotenv
 
 def init():
     global server; server = None
+    global hub_uri; hub_uri = None
     global driver; driver = None
     global altUnityDriver; altUnityDriver = None
     global time_start; time_start = None
