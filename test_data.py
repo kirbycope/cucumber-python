@@ -11,3 +11,4 @@ def init():
     global base_url; base_url = os.environ.get("TEST_BASE_URL")
     global test_user; test_user = os.environ.get("TEST_USER")
     global test_pass; test_pass = os.environ.get("TEST_PASS")
+    global token; token = os.environ.get("TOKEN")

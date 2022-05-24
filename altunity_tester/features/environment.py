@@ -25,11 +25,12 @@ def after_all(context):
 def before_scenario(context, scenario):
     """ This runs before each scenario. """
     start_session()
-    token = os.environ.get("TOKEN")
-    udid = read_from_config("UDID")
-    devices = headspin.devices()
-    host_name = headspin.device_hostname(devices, udid)
-    os.system("hs connect -t {} {}@{}".format(token, udid, host_name))
+    hub_uri = read_from_config("HUBURI")
+    if "headspin" in hub_uri:
+        devices = headspin.devices()
+        udid = read_from_config("UDID")
+        host_name = headspin.device_hostname(devices, udid)
+        os.system("hs connect -t {} {}@{}".format(test_data.token, udid, host_name))
     AltUnityPortForwarding.forward_android()
     test_data.altUnityDriver = AltUnityDriver()
 
@@ -38,7 +39,9 @@ def after_scenario(context, scenario):
     """ This runs after each scenario. """
     test_data.driver.quit()
     test_data.altUnityDriver.stop()
-    AltUnityPortForwarding.remove_forward_android()
+    hub_uri = read_from_config("HUBURI")
+    if "local" in hub_uri:
+        AltUnityPortForwarding.remove_forward_android()
 
 
 def read_from_config(key):
@@ -58,18 +61,21 @@ def start_server():
 def start_session():
     """ Starts a session with the global webdriver. """
     desired_capabilities = {
-        #"appium:app": read_from_config("APP"),
         "appium:udid": read_from_config("UDID"),
-        "platformName": read_from_config("PLATFORMNAME"),
-        "autoGrantPermissions": True,
-        "headspin:appId": read_from_config("APPID"),
-        "headspin:capture": True,
-        "headspin:controlLock": True,
-        "headspin:newcommandtimeout": 120,
-        "headspin:waitForDeviceOnlineTimeout": 120
+        "platformName": read_from_config("PLATFORMNAME")
     }
-    token = os.environ.get("TOKEN")
-    command_executor = read_from_config("HUBURI") + "/" + token + "/wd/hub"
+    hub_uri = read_from_config("HUBURI")
+    if "headspin" in hub_uri:
+        desired_capabilities["autoGrantPermissions"] = True
+        desired_capabilities["headspin:appId"] = read_from_config("APPID")
+        desired_capabilities["headspin:capture"] = True
+        desired_capabilities["headspin:controlLock"] = True
+        desired_capabilities["headspin:newcommandtimeout"] = 120
+        desired_capabilities["headspin:waitForDeviceOnlineTimeout"] = 120
+        command_executor = hub_uri + "/" + test_data.token + "/wd/hub"
+    else:
+        desired_capabilities["appium:app": read_from_config("APP")]
+        command_executor = hub_uri
     test_data.driver = webdriver.Remote(command_executor, desired_capabilities)
     test_data.driver.implicitly_wait(5)
 
