@@ -33,6 +33,8 @@
    TEST_BASE_URL="https://the-internet.herokuapp.com"
    TEST_USER="tomsmith"
    TEST_PASS="SuperSecretPassword!"
+
+   TOKEN=""
    ```
 1. Save
 
