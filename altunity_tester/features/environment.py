@@ -2,6 +2,7 @@ from appium import webdriver
 from appium.webdriver.appium_service import AppiumService
 from altunityrunner import *
 from datetime import timedelta
+from dotenv import load_dotenv, find_dotenv
 import time
 import configparser
 import os
@@ -55,6 +56,10 @@ def read_from_config(key):
     config.read("altunity.ini")
     return config["DEFAULT"][key]
 
+def read_from_env(key):
+    """ Read the value of the given key from the envrionment variable. """
+    load_dotenv(find_dotenv())
+    return os.environ.get(key)
 
 def start_server():
     test_data.server = AppiumService()
@@ -78,7 +83,8 @@ def start_session():
         caps["headspin:capture"] = True
         caps["headspin:controlLock"] = True
         caps["headspin:newcommandtimeout"] = 120
-        hub_uri = hub_uri + "/" + test_data.headspin_token + "/wd/hub"
+        token = read_from_env("HEADSPIN_TOKEN")
+        hub_uri = hub_uri + "/" + token + "/wd/hub"
     else:
         caps["appium:app"] = read_from_config("APP")
     print("Starting Appium WebDriver...")
