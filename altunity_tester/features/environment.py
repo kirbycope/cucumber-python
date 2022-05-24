@@ -20,7 +20,8 @@ def before_all(context):
 
 def after_all(context):
     """ This runs after the whole shooting match. """
-    test_data.server.stop()
+    if "local" in test_data.hub_uri:
+        test_data.server.stop()
     stop_debug_timer()
 
 
@@ -31,7 +32,7 @@ def before_scenario(context, scenario):
         devices = headspin.devices()
         udid = read_from_config("UDID")
         host_name = headspin.device_hostname(devices, udid)
-        os.system("hs connect -t {} {}@{}".format(test_data.token, udid, host_name))
+        os.system("hs connect -t {} {}@{}".format(test_data.headspin_token, udid, host_name))
     AltUnityPortForwarding.forward_android()
     test_data.altUnityDriver = AltUnityDriver()
 
@@ -60,22 +61,23 @@ def start_server():
 
 def start_session():
     """ Starts a session with the global webdriver. """
-    desired_capabilities = {
-        "appium:udid": read_from_config("UDID"),
-        "platformName": read_from_config("PLATFORMNAME")
+    platform_name = read_from_config("PLATFORMNAME")
+    udid = read_from_config("UDID")
+    caps = {
+        "appium:udid": udid,
+        "platformName": platform_name
     }
+    hub_uri = read_from_config("HUBURI")
     if "headspin" in test_data.hub_uri:
-        desired_capabilities["autoGrantPermissions"] = True
-        desired_capabilities["headspin:appId"] = read_from_config("APPID")
-        desired_capabilities["headspin:capture"] = True
-        desired_capabilities["headspin:controlLock"] = True
-        desired_capabilities["headspin:newcommandtimeout"] = 120
-        desired_capabilities["headspin:waitForDeviceOnlineTimeout"] = 120
-        command_executor = "{}/{}/wb/hub".format(test_data.hub_uri, test_data.token)
+        caps["autoGrantPermissions"] = True
+        caps["headspin:appId"] = read_from_config("APPID")
+        caps["headspin:capture"] = True
+        caps["headspin:controlLock"] = True
+        caps["headspin:newcommandtimeout"] = 120
+        hub_uri = hub_uri + "/" + test_data.headspin_token + "/wd/hub"
     else:
-        desired_capabilities["appium:app": read_from_config("APP")]
-        command_executor = test_data.hub_uri
-    test_data.driver = webdriver.Remote(command_executor, desired_capabilities)
+        caps["appium:app"] = read_from_config("APP")
+    test_data.driver = webdriver.Remote(command_executor=hub_uri, desired_capabilities=caps)
     test_data.driver.implicitly_wait(5)
 
 

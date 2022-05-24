@@ -35,7 +35,7 @@
    TEST_USER="tomsmith"
    TEST_PASS="SuperSecretPassword!"
 
-   TOKEN=""
+   HEADSPIN_TOKEN=""
    ```
 1. Save
 

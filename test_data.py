@@ -3,7 +3,6 @@ from dotenv import load_dotenv, find_dotenv
 
 def init():
     global server; server = None
-    global hub_uri; hub_uri = None
     global driver; driver = None
     global altUnityDriver; altUnityDriver = None
     global time_start; time_start = None
@@ -12,4 +11,4 @@ def init():
     global base_url; base_url = os.environ.get("TEST_BASE_URL")
     global test_user; test_user = os.environ.get("TEST_USER")
     global test_pass; test_pass = os.environ.get("TEST_PASS")
-    global token; token = os.environ.get("TOKEN")
+    global headspin_token; headspin_token = os.environ.get("HEADSPIN_TOKEN")

@@ -1,6 +1,5 @@
-import os
 import requests
-
+import test_data
 
 def devices():
     req = "devices"
@@ -16,9 +15,8 @@ def device_hostname(devices, udid):
 
 def send_request(verb, req, data=None):
     # print('\u001b[36m' + verb + " | " + req + '\u001b[0m')  # DEBUGGING
-    api_token = os.environ.get("TOKEN")
     headers = {
-        "Authorization": "Bearer {}".format(api_token)
+        "Authorization": "Bearer {}".format(test_data.headspin_token)
     }
     req = "https://api-dev.headspin.io/v0/{}".format(req)
     if data == None:
