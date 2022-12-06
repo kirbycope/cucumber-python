@@ -1,4 +1,5 @@
 import test_data
+from selenium.webdriver.common.by import By
 
 
 # URL looks like: {baseURL}/login
@@ -6,17 +7,17 @@ import test_data
 
 def inputUserName():
     """ The `input` for "Username". """
-    return test_data.driver.find_element_by_id('username')
+    return test_data.driver.find_element(By.ID, 'username')
 
 
 def inputPassword():
     """ The `input` for "Password". """
-    return test_data.driver.find_element_by_id('password')
+    return test_data.driver.find_element(By.ID, 'password')
 
 
 def btnSubmit():
     """ The `button` to submit a form. """
-    return test_data.driver.find_element_by_css_selector('button[type="submit"]')
+    return test_data.driver.find_element(By.CSS_SELECTOR, 'button[type="submit"]')
 
 
 def open():

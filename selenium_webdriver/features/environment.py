@@ -3,6 +3,7 @@ from datetime import timedelta
 from selenium import webdriver
 import chromedriver_binary  # required, do not remove
 import test_data
+import platform
 
 
 def before_scenario(context, scenario):
@@ -22,6 +23,9 @@ def after_scenario(context, scenario):
 
 def start_session():
     """ Starts a session with the global webdriver. """
-    test_data.driver = webdriver.Chrome()
+    opts = webdriver.ChromeOptions()
+    if platform.system() == "Linux":
+        opts.add_argument("--headless")
+    test_data.driver = webdriver.Chrome(chrome_options=opts)
     test_data.driver.maximize_window()
     test_data.driver.implicitly_wait(5)

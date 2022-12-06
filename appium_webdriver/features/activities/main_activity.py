@@ -1,5 +1,6 @@
 from time import sleep
 import test_data
+from selenium.webdriver.common.by import By
 
 
 # MainActivity.kt
@@ -7,12 +8,12 @@ import test_data
 
 def editTextEnterAMessage():
     """ The `editText` with the placeholder 'Enter a messsage'. """
-    return test_data.driver.find_element_by_id("editTextTextPersonName")
+    return test_data.driver.find_element(By.ID, "editTextTextPersonName")
 
 
 def buttonSend():
     """ The 'SEND' `button`. """
-    return test_data.driver.find_element_by_id("button")
+    return test_data.driver.find_element(By.ID, "button")
 
 
 def open():
