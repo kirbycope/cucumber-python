@@ -23,6 +23,7 @@ def after_scenario(context, scenario):
 def start_session():
     """ Starts a session with the global webdriver. """
     opts = webdriver.ChromeOptions()
+    opts.add_argument("--headless")
     opts.add_argument("--no-sandbox")
     opts.add_argument("--disable-dev-shm-usage")
     test_data.driver = webdriver.Chrome(chrome_options=opts)
