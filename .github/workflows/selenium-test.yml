@@ -10,7 +10,9 @@ on:
     branches: [ "main" ]
 
 env:
-  CONFIG: ""
+  TEST_BASE_URL: "https://the-internet.herokuapp.com"
+  TEST_USER: "tomsmith"
+  TEST_PASS: "SuperSecretPassword!"
 
 permissions:
   contents: read
