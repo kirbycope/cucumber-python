@@ -24,7 +24,6 @@ def after_scenario(context, scenario):
 def start_session():
     """ Starts a session with the global webdriver. """
     opts = webdriver.ChromeOptions()
-    print(platform.system())
     if platform.system() == "Linux":
         opts.add_argument("--headless")
     test_data.driver = webdriver.Chrome(chrome_options=opts)
