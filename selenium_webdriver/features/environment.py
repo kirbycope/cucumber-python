@@ -22,6 +22,8 @@ def after_scenario(context, scenario):
 
 def start_session():
     """ Starts a session with the global webdriver. """
-    test_data.driver = webdriver.Chrome()
+    opts = webdriver.ChromeOptions()
+    opts.add_argument("--disable-dev-shm-usage")
+    test_data.driver = webdriver.Chrome(options=opts)
     test_data.driver.maximize_window()
     test_data.driver.implicitly_wait(5)
