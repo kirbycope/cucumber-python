@@ -10,7 +10,7 @@ on:
     branches: [ main ]
 
 env:
-  HEADSPIN_API_TOKEN: ${{ secrets.HEADSPIN_API_TOKEN }}
+  HEADSPIN_TOKEN: ${{ secrets.HEADSPIN_TOKEN }}
 
 jobs:
   test:
