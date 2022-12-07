@@ -35,5 +35,4 @@ jobs:
         target: playstore
         arch: x86
         script: |
-          cd behave altunity_tester/features && ls -a
-          behave behave altunity_tester/features
+          behave altunity_tester/features
