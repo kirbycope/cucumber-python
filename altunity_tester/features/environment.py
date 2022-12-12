@@ -31,10 +31,9 @@ def before_scenario(context, scenario):
     start_session()
     print("Forwaring port for AltUnity...")
     if "headspin" in test_data.hub_uri:
-        devices = headspin.devices()
-        udid = from_config("UDID")
-        host_name = headspin.device_hostname(devices, udid)
-        os.system("hs connect -t {} {}@{}".format(test_data.headspin_token, udid, host_name))
+        connect_headspin()
+    elif "saucelabs" in test_data.hub_uri:
+        connect_saucelabs()
     AltUnityPortForwarding.forward_android()
     test_data.altUnityDriver = AltUnityDriver()
     print("Forwarded.")
@@ -73,6 +72,16 @@ def start_session():
         caps["headspin:newcommandtimeout"] = 120
         token = from_env("HEADSPIN_TOKEN")
         hub_uri = test_data.hub_uri + "/" + token + "/wd/hub"
+    elif "saucelabs" in test_data.hub_uri:
+        caps["appium:app"] = "storage:filename=" + from_config("APPID")
+        caps['appium:deviceName'] = 'Samsung_Galaxy_S8_POC144'
+        caps['appium:automationName'] = 'UiAutomator2'
+        caps['sauce:options'] = {}
+        caps['sauce:options']['build'] = '<your build id>'
+        caps['sauce:options']['name'] = '<your test name>'
+        username = from_env("SAUCE_USERNAME")
+        access_key = from_env("SAUCE_ACCESS_KEY")
+        hub_uri = f"https://{username}:{access_key}@ondemand.us-west-1.saucelabs.com:443/wd/hub"
     else:
         caps["appium:app"] = from_config("APP")
         hub_uri = test_data.hub_uri
@@ -88,3 +97,24 @@ def stop_debug_timer():
     time_taken = str(
         timedelta(seconds=test_data.time_end - test_data.time_start))
     print("\n" + '\033[94m' + "  Total Test Time: " + time_taken + '\033[0m')
+
+
+def connect_headspin():
+    devices = headspin.devices()
+    udid = from_config("UDID")
+    host_name = headspin.device_hostname(devices, udid)
+    os.system("hs connect -t {} {}@{}".format(test_data.headspin_token, udid, host_name))
+
+
+def connect_saucelabs():
+    sauce_jar = from_env("SAUCE_VUSB_JAR")
+    start_vusb = f"java -jar {sauce_jar} server --datacenter US"
+    os.popen(start_vusb)
+    username = from_env("SAUCE_USERNAME")
+    access_key = from_env("SAUCE_ACCESS_KEY")
+    get_sessions = f"java -jar {sauce_jar} sessions --username {username} --accessKey {access_key}"
+    sessions = os.popen(get_sessions).read()
+    sauce_session_id = sessions.split("\n")[2].split()[0]
+    connect_session = f"java -jar {sauce_jar} connect --sessionId {sauce_session_id} --username {username} --accessKey {access_key}"
+    os.system(connect_session)
+    os.system("adb connect localhost:7001")

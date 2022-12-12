@@ -35,6 +35,10 @@
    TEST_PASS="SuperSecretPassword!"
 
    HEADSPIN_TOKEN=""
+
+   SAUCE_USERNAME=""
+   SAUCE_ACCESS_KEY=""
+   SAUCE_VUSB_JAR=""
    ```
 1. Save
 
@@ -52,10 +56,17 @@ The [apk](/trashcat.apk) is included as part of _this_ sample repo.
 
 #### Headspin Runs
 1. Set `HEADSPIN_TOKEN` in .env to your [Heapspin API Token](https://ui.headspin.io/docs/api-tokens)
-1. Set the `APPID` in  [altunity.ini](/altunity.ini) to the ID of the [app you uploaded to Headspin](https://ui.headspin.io/docs/app-api)
+1. Set the `APPID` in [altunity.ini](/altunity.ini) to the ID of the [app you uploaded to Headspin](https://ui.headspin.io/docs/app-api)
 1. Set the `HUBURI` in [altunity.ini](/altunity.ini) to `https://appium-dev.headspin.io:443/v0`
 1. Set the `UDID` in [altunity.ini](/altunity.ini) to the "serial" of your Android [Headspin device](https://ui.headspin.io/docs/devices-api)
 1. In the integrated terminal run `behave altunity_tester/features`
+
+#### SauceLabs Runs
+1. Set the `SAUCE_USERNAME`,`SAUCE_ACCESS_KEY` in .env to your [Sauce Labs credentials](https://docs.saucelabs.com/mobile-apps/features/virtual-usb/#gather-credentials)
+1. Set the `SAUCE_VUSB_JAR` in .env to the path where you downloaded [Virtual USB](https://docs.saucelabs.com/mobile-apps/features/virtual-usb/#download-client)
+1. Set the `APPID` in [altunity.ini](/altunity.ini) to `trashcat.apk` to use the [file you uploaded](https://docs.saucelabs.com/mobile-apps/live-testing/live-mobile-app-testing/#uploading-an-app)
+1. Set `HUB_URI` in [altunity.ini](/altunity.ini) to `https://ondemand.us-west-1.saucelabs.com:443/wb/hub`
+
 
 ### Appium (Mobile Apps)
 [Appium](https://appium.io) is an open source automation tool for running scripts and testing native applications, mobile-web applications and hybrid applications on Android or iOS using a webdriver.</br>

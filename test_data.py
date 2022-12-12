@@ -13,3 +13,4 @@ def init():
     global test_user; test_user = os.environ.get("TEST_USER")
     global test_pass; test_pass = os.environ.get("TEST_PASS")
     global headspin_token; headspin_token = os.environ.get("HEADSPIN_TOKEN")
+    global sauce_jar; sauce_jar = os.environ.get("SAUCE_VUSB_JAR")
