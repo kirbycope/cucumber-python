@@ -37,8 +37,6 @@ jobs:
         curl https://saucelabs-vusb.s3.eu-west-1.amazonaws.com/v2.0.3/virtual-usb-client-2.0.3.jar -o virtual-usb-client.jar
     - name: Test with behave
       run: |
-        pwd
-        ls -la
         behave altunity_tester/features
       env:
-        SAUCE_VUSB_JAR: "/home/runner/cucumber-python/cucumber-python/virtual-usb-client.jar"
+        SAUCE_VUSB_JAR: "/home/runner/work/cucumber-python/cucumber-python/virtual-usb-client.jar"
