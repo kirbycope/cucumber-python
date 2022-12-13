@@ -29,7 +29,7 @@ def after_all(context):
 def before_scenario(context, scenario):
     """ This runs before each scenario. """
     start_session()
-    print("Forwaring port for AltUnity...")
+    print("Forwarding port for AltUnity...")
     if "headspin" in test_data.hub_uri:
         connect_headspin()
     elif "saucelabs" in test_data.hub_uri:
