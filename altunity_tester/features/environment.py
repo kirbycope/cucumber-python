@@ -118,4 +118,7 @@ def connect_saucelabs():
     sauce_session_id = sessions.split("\n")[2].split()[0]
     connect_session = f"java -jar {sauce_jar} connect --sessionId {sauce_session_id} --username {username} --accessKey {access_key}"
     os.system(connect_session)
-    os.system("adb connect localhost:7001")
+    try:
+        os.system("adb connect localhost:7000")
+    except:
+        os.system("adb connect localhost:7001")
