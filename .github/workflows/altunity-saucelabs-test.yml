@@ -34,7 +34,9 @@ jobs:
         python -m pip install --upgrade pip
         pip install wheel
         pip install -r requirements.txt
-        curl https://saucelabs-vusb.s3.eu-west-1.amazonaws.com/v2.0.3/virtual-usb-client-2.0.3.jar -o virtual-usb-client-2.0.3.jar
+        curl https://saucelabs-vusb.s3.eu-west-1.amazonaws.com/v2.0.3/virtual-usb-client-2.0.3.jar -o virtual-usb-client.jar
     - name: Test with behave
       run: |
         behave altunity_tester/features
+      env:
+        SAUCE_VUSB_JAR: "/home/runner/cucumber-python/cucumber-python/virtual-usb-client.jar"
