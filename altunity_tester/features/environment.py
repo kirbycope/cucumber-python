@@ -51,7 +51,7 @@ def start_server():
     print("Starting Appium Server...")
     test_data.server = AppiumService()
     pwd = sys.path[0]
-    script = pwd + "\\node_modules\\appium\\build\\lib\\main.js"
+    script = pwd + "/node_modules/appium/build/lib/main.js"
     test_data.server.start(main_script=script)
     print("Started.")
 
