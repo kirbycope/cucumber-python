@@ -21,7 +21,7 @@ def open():
 
 def start_run_then_pause():
     """ Starts a run and then pauses after 10 seconds. """
-    time.sleep(2)
+    time.sleep(5)
     btnRun().tap()
     time.sleep(10)
     btnPause().tap()
