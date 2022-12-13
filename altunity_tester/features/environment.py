@@ -48,7 +48,7 @@ def after_scenario(context, scenario):
 
 
 def start_server():
-    print("String Appium Server...")
+    print("Starting Appium Server...")
     test_data.server = AppiumService()
     pwd = sys.path[0]
     script = pwd + "\\node_modules\\appium\\build\\lib\\main.js"
