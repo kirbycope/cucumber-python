@@ -88,7 +88,7 @@ def start_session():
         hub_uri = test_data.hub_uri
     print("Starting Appium WebDriver...")
     test_data.driver = webdriver.Remote(command_executor=hub_uri, desired_capabilities=caps)
-    test_data.driver.implicitly_wait(5)
+    test_data.driver.implicitly_wait(30)
     print("Session ID: " + test_data.driver.session_id)
 
 
