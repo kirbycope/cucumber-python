@@ -1,6 +1,8 @@
 from appium import webdriver
 from appium.webdriver.appium_service import AppiumService
 from datetime import timedelta
+from helpers.config import from_config, from_env
+import os
 import time
 import configparser
 import test_data
@@ -41,13 +43,14 @@ def start_server():
     test_data.server = AppiumService()
     pwd = sys.path[0]
     script = pwd + "/node_modules/appium/build/lib/main.js"
-    test_data.server.start(main_script=script)
+    test_data.server.start(main_script=script, args=['--base-path', '/wd/hub'])
 
 
 def start_session():
     """ Starts a session with the global webdriver. """
+    app = os.path.join(sys.path[0], "appium_webdriver", read_from_config("APP"))
     desired_capabilities = {
-        "appium:app": read_from_config("APP"),
+        "appium:app": app,
         "appium:udid": read_from_config("UDID"),
         "platformName": read_from_config("PLATFORMNAME")
     }
@@ -59,6 +62,5 @@ def start_session():
 def stop_debug_timer():
     """ Prints diff of `test_data.time_start` and `test_data.time_end`. """
     test_data.time_end = time.time()
-    time_taken = str(
-        timedelta(seconds=test_data.time_end - test_data.time_start))
+    time_taken = str(timedelta(seconds=test_data.time_end - test_data.time_start))
     print("\n" + '\033[94m' + "  Total Test Time: " + time_taken + '\033[0m')

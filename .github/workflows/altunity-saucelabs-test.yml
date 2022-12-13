@@ -5,14 +5,18 @@ name: AltUnity SauceLabs
 
 on:
   push:
-    branches: [ main ]
+    branches: [ "main" ]
   pull_request:
-    branches: [ main ]
+    branches: [ "main" ]
 
 env:
+  CONFIG: "altunity_saucelabs"
   SAUCE_USERNAME: ${{ secrets.SAUCE_USERNAME }}
   SAUCE_ACCESS_KEY: ${{ secrets.SAUCE_ACCESS_KEY }}
-  SAUCE_VUSB_JAR: "/virtual-usb-client-2.0.3.jar"
+  SAUCE_VUSB_JAR: ""
+
+permissions:
+  contents: read
 
 jobs:
   test:

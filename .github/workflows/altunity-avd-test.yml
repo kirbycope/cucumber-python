@@ -9,11 +9,15 @@ on:
   pull_request:
     branches: [ "main" ]
 
+env:
+  CONFIG: "altunity_local"
+
 permissions:
   contents: read
 
 jobs:
   test:
+
     runs-on: macos-latest
 
     steps:

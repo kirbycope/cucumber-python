@@ -5,12 +5,16 @@ name: AltUnity Headspin
 
 on:
   push:
-    branches: [ main ]
+    branches: [ "main" ]
   pull_request:
-    branches: [ main ]
+    branches: [ "main" ]
 
 env:
+  CONFIG: "altunity_headspin"
   HEADSPIN_TOKEN: ${{ secrets.HEADSPIN_TOKEN }}
+
+permissions:
+  contents: read
 
 jobs:
   test:

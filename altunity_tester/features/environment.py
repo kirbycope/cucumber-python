@@ -52,7 +52,7 @@ def start_server():
     test_data.server = AppiumService()
     pwd = sys.path[0]
     script = pwd + "/node_modules/appium/build/lib/main.js"
-    test_data.server.start(main_script=script)
+    test_data.server.start(main_script=script, args=['--base-path', '/wd/hub'])
     print("Started.")
 
 
@@ -75,7 +75,6 @@ def start_session():
         hub_uri = test_data.hub_uri + "/" + token + "/wd/hub"
     elif "saucelabs" in test_data.hub_uri:
         caps["appium:app"] = "storage:filename=" + from_config("APPID")
-        caps['appium:deviceName'] = 'Samsung_Galaxy_S8_POC144'
         caps['appium:automationName'] = 'UiAutomator2'
         caps['sauce:options'] = {}
         caps['sauce:options']['build'] = '<your build id>'
@@ -84,7 +83,8 @@ def start_session():
         access_key = from_env("SAUCE_ACCESS_KEY")
         hub_uri = f"https://{username}:{access_key}@ondemand.us-west-1.saucelabs.com:443/wd/hub"
     else:
-        caps["appium:app"] = from_config("APP")
+        app = os.path.join(sys.path[0], "altunity_tester", from_config("APP"))
+        caps["appium:app"] = app
         hub_uri = test_data.hub_uri
     print("Starting Appium WebDriver...")
     test_data.driver = webdriver.Remote(command_executor=hub_uri, desired_capabilities=caps)

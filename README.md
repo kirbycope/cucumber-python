@@ -16,7 +16,6 @@
 ## Getting Started
 1. Install [Python3](https://www.python.org/downloads/)
 1. Install [NodeJS](https://nodejs.org/en/) LTS
-1. Install [Headspin CLI](https://ui.headspin.io/docs/cli)
 1. Install [Android Studio](https://developer.android.com/studio) and [create an AVD](https://developer.android.com/studio/run/managing-avds)
    * The AVD needs to be "x86" not "x86_64" to work with the [provided] example apk(s)
 1. Clone this repo
@@ -34,6 +33,8 @@
    TEST_USER="tomsmith"
    TEST_PASS="SuperSecretPassword!"
 
+   CONFIG="altunity_local"
+
    HEADSPIN_TOKEN=""
 
    SAUCE_USERNAME=""
@@ -49,24 +50,27 @@
 The [apk](/trashcat.apk) is included as part of _this_ sample repo.
 
 #### Local Runs
-1. Set the `HUBURI` in [altunity.ini](/altunity.ini) to `http://localhost:4723/wd/hub`
-1. Set the `UDID` in [altunity.ini](/altunity.ini) to `emulator-5554`
+1. Set the `CONFIG` in .env to `altunity_local`
 1. Launch an [AVD](https://developer.android.com/studio/run/emulator-commandline)
 1. In the integrated terminal run `behave altunity_tester/features`
 
 #### Headspin Runs
+1. Install [Headspin CLI](https://ui.headspin.io/docs/cli)
 1. Set `HEADSPIN_TOKEN` in .env to your [Heapspin API Token](https://ui.headspin.io/docs/api-tokens)
-1. Set the `APPID` in [altunity.ini](/altunity.ini) to the ID of the [app you uploaded to Headspin](https://ui.headspin.io/docs/app-api)
-1. Set the `HUBURI` in [altunity.ini](/altunity.ini) to `https://appium-dev.headspin.io:443/v0`
-1. Set the `UDID` in [altunity.ini](/altunity.ini) to the "serial" of your Android [Headspin device](https://ui.headspin.io/docs/devices-api)
+1. Set the `CONFIG` in .env to `altunity_headspin`
+   1. Set the `APPID` in [altunity_headspin.ini](/altunity_headspin.ini) to the ID of the [app you uploaded to Headspin](https://ui.headspin.io/docs/app-api)
+   1. Set the `HUBURI` in [altunity_headspin.ini](/altunity_headspin.ini) to `https://appium-dev.headspin.io:443/v0`
+   1. Set the `UDID` in [altunity.ini](/altunity.ini) to the "serial" of your Android [Headspin device](https://ui.headspin.io/docs/devices-api)
 1. In the integrated terminal run `behave altunity_tester/features`
 
 #### SauceLabs Runs
+1. Install [Virtual USB](https://docs.saucelabs.com/mobile-apps/features/virtual-usb/#download-client)
 1. Set the `SAUCE_USERNAME`,`SAUCE_ACCESS_KEY` in .env to your [Sauce Labs credentials](https://docs.saucelabs.com/mobile-apps/features/virtual-usb/#gather-credentials)
-1. Set the `SAUCE_VUSB_JAR` in .env to the path where you downloaded [Virtual USB](https://docs.saucelabs.com/mobile-apps/features/virtual-usb/#download-client)
-1. Set the `APPID` in [altunity.ini](/altunity.ini) to `trashcat.apk` to use the [file you uploaded](https://docs.saucelabs.com/mobile-apps/live-testing/live-mobile-app-testing/#uploading-an-app)
-1. Set `HUB_URI` in [altunity.ini](/altunity.ini) to `https://ondemand.us-west-1.saucelabs.com:443/wb/hub`
-
+1. Set the `SAUCE_VUSB_JAR` in .env to the path where you downloaded Virtual USB
+1. Set the `CONFIG` in .env to `altunity_saucelabs`
+   1. Set the `APPID` in [altunity_saucelabs.ini](/altunity_saucelabs.ini) to `trashcat.apk` to use the [file you uploaded](https://docs.saucelabs.com/mobile-apps/live-testing/live-mobile-app-testing/#uploading-an-app)
+   1. Set `HUB_URI` in [altunity_saucelabs.ini](/altunity_saucelabs.ini) to `https://ondemand.us-west-1.saucelabs.com:443/wb/hub`
+1. In the integrated terminal run `behave altunity_tester/features`
 
 ### Appium (Mobile Apps)
 [Appium](https://appium.io) is an open source automation tool for running scripts and testing native applications, mobile-web applications and hybrid applications on Android or iOS using a webdriver.</br>

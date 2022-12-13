@@ -4,7 +4,7 @@ import os
 
 
 def from_config(key):
-    config_file = "altunity" # from_env("CONFIG")
+    config_file = from_env("CONFIG")
     config = configparser.ConfigParser()
     config.read(config_file + ".ini")
     return config["DEFAULT"][key]
