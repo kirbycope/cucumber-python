@@ -13,7 +13,6 @@ env:
   CONFIG: "altunity_saucelabs"
   SAUCE_USERNAME: ${{ secrets.SAUCE_USERNAME }}
   SAUCE_ACCESS_KEY: ${{ secrets.SAUCE_ACCESS_KEY }}
-  SAUCE_VUSB_JAR: ""
 
 permissions:
   contents: read
@@ -37,6 +36,7 @@ jobs:
         curl https://saucelabs-vusb.s3.eu-west-1.amazonaws.com/v2.0.3/virtual-usb-client-2.0.3.jar -o virtual-usb-client.jar
     - name: Test with behave
       run: |
+        export PATH=$PATH:/usr/local/lib/android/sdk/build-tools/30.0.0
         behave altunity_tester/features
       env:
         SAUCE_VUSB_JAR: "/home/runner/work/cucumber-python/cucumber-python/virtual-usb-client.jar"
