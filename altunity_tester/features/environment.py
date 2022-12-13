@@ -62,7 +62,8 @@ def start_session():
     udid = from_config("UDID")
     caps = {
         "appium:udid": udid,
-        "platformName": platform_name
+        "platformName": platform_name,
+        "newCommandTimeout": 999
     }
     if "headspin" in test_data.hub_uri:
         caps["autoGrantPermissions"] = True
