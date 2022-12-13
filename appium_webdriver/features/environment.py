@@ -40,7 +40,7 @@ def read_from_config(key):
 def start_server():
     test_data.server = AppiumService()
     pwd = sys.path[0]
-    script = pwd + "\\node_modules\\appium\\build\\lib\\main.js"
+    script = pwd + "/node_modules/appium/build/lib/main.js"
     test_data.server.start(main_script=script)
 
 
