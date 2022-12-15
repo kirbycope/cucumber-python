@@ -50,6 +50,7 @@ def start_session():
     """ Starts a session with the global webdriver. """
     app = os.path.join(sys.path[0], "appium_webdriver", read_from_config("APP"))
     desired_capabilities = {
+        "appium:allowTestPackages": true,
         "appium:app": app,
         "appium:udid": read_from_config("UDID"),
         "platformName": read_from_config("PLATFORMNAME")
