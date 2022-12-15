@@ -35,7 +35,7 @@ def before_scenario(context, scenario):
     elif "saucelabs" in test_data.hub_uri:
         connect_saucelabs()
     AltUnityPortForwarding.forward_android()
-    test_data.altUnityDriver = AltUnityDriver(timeout=120)
+    test_data.altUnityDriver = AltUnityDriver(timeout=180)
     print("Forwarded.")
 
 
