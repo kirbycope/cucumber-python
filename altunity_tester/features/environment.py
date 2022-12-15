@@ -85,6 +85,7 @@ def start_session():
     else:
         app = os.path.join(sys.path[0], "altunity_tester", from_config("APP"))
         caps["appium:app"] = app
+        caps["uiautomator2ServerInstallTimeout"] = 60000
         hub_uri = test_data.hub_uri
     print("Starting Appium WebDriver...")
     test_data.driver = webdriver.Remote(command_executor=hub_uri, desired_capabilities=caps)
