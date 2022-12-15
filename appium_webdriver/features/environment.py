@@ -57,7 +57,7 @@ def start_session():
     }
     command_executor = read_from_config("HUBURI")
     test_data.driver = webdriver.Remote(command_executor, desired_capabilities)
-    test_data.driver.implicitly_wait(5)
+    test_data.driver.implicitly_wait(30)
 
 
 def stop_debug_timer():
