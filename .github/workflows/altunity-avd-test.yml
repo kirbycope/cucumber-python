@@ -32,7 +32,7 @@ jobs:
         pip install wheel
         npm i appium
         pip install -r requirements.txt
-    - name: Run tests
+    - name: Run tests on emulator
       uses: reactivecircus/android-emulator-runner@v2
       with:
         api-level: 30
