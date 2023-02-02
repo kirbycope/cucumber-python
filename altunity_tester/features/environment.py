@@ -116,7 +116,18 @@ def connect_saucelabs():
     access_key = from_env("SAUCE_ACCESS_KEY")
     get_sessions = f"java -jar {sauce_jar} sessions --username {username} --accessKey {access_key}"
     sessions = os.popen(get_sessions).read()
-    sauce_session_id = sessions.split("\n")[2].split()[0]
+    sauce_session_id = None
+    session_count = sessions.split("\n")
+    if len(session_count) == 2:
+        sauce_session_id = sessions.split("\n")[2].split()[0]
+    elif len(session_count) == 3:
+        sauce_session_id = sessions.split("\n")[3].split()[0]
+    elif len(session_count) == 4:
+        sauce_session_id = sessions.split("\n")[4].split()[0]
+    elif len(session_count) == 5:
+        sauce_session_id = sessions.split("\n")[5].split()[0]
+    elif len(session_count) == 5:
+        sauce_session_id = sessions.split("\n")[6].split()[0]
     connect_session = f"java -jar {sauce_jar} connect --sessionId {sauce_session_id} --username {username} --accessKey {access_key}"
     os.system(connect_session)
     try:
