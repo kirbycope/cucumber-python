@@ -1,0 +1,22 @@
+<testsuite name="main_scene.Main scene" tests="1" errors="1" failures="0" skipped="0" time="0.0" timestamp="2023-02-02T12:08:10.085358" hostname="GF63"><testcase classname="main_scene.Main scene" name="Pause a run -- @1.1 " status="failed" time="0"><error type="IndexError" message="HOOK-ERROR in before_scenario: IndexError: list index out of range&#10;HOOK-ERROR in after_scenario: AttributeError: 'NoneType' object has no attribute 'stop'">
+<![CDATA[Traceback:
+  File "C:\Users\kirby\AppData\Local\Programs\Python\Python311\Lib\site-packages\behave\runner.py", line 545, in run_hook
+    self.hooks[name](context, *args)
+  File "altunity_tester\features\environment.py", line 36, in before_scenario
+    connect_saucelabs()
+  File "altunity_tester\features\environment.py", line 128, in connect_saucelabs
+    sauce_session_id = sessions.split("\n")[5].split()[0]
+                       ~~~~~~~~~~~~~~~~~~~~^^^
+]]>
+</error><system-out>
+<![CDATA[
+@scenario.begin
+  Scenario Outline: Pause a run -- @1.1 
+    Given I open the Main scene ... untested in 0.000s
+    When I start running and pause ... untested in 0.000s
+    Then I should see the Pause Menu ... untested in 0.000s
+
+@scenario.end
+--------------------------------------------------------------------------------
+]]>
+</system-out></testcase></testsuite>
